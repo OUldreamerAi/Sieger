@@ -1,0 +1,240 @@
+[gd_scene load_steps=16 format=3 uid="uid://cafolyp5mp88h"]
+
+[ext_resource type="PackedScene" uid="uid://ej413fo3j4di" path="res://Scenes/player.tscn" id="1_ujgkp"]
+[ext_resource type="Texture2D" uid="uid://6rgv4v72hhmj" path="res://Assets/parchment-texture-e4dc566e.jpg" id="2_w1p23"]
+[ext_resource type="Script" uid="uid://qn6abi1fwdmc" path="res://Scripts/sword_player.gd" id="3_c5ob8"]
+[ext_resource type="Texture2D" uid="uid://ce10coastgquh" path="res://Assets/sword.png" id="4_efikr"]
+[ext_resource type="Script" uid="uid://cwd20pmm2t2dc" path="res://Scripts/swordmaster.gd" id="4_ilxhi"]
+[ext_resource type="Texture2D" uid="uid://s5vcbabxqruv" path="res://Assets/NewAssets/mercenary-63f27597.png" id="4_t7fo4"]
+[ext_resource type="Texture2D" uid="uid://dti7x0aqcikfb" path="res://Assets/meeple-green-09f22940 (1).png" id="5_8da05"]
+[ext_resource type="Texture2D" uid="uid://bpklhj43smhkn" path="res://Assets/NewAssets/satchel (1).png" id="5_ilxhi"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w1p23"]
+rough = true
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_c5ob8"]
+distance = 141.53857
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efikr"]
+size = Vector2(535, 86)
+
+[sub_resource type="Animation" id="Animation_efikr"]
+resource_name = "atack"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/Sword2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.5235988, 1.5707964, 0.5235988]
+}
+
+[sub_resource type="Animation" id="Animation_8da05"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/Sword2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5235988]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Swordmaster/Sword:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.5235988]
+}
+
+[sub_resource type="Animation" id="Animation_5pkka"]
+resource_name = "attack"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Swordmaster/Sword:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.5235988, -1.5707964, -0.5235988]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3fv43"]
+_data = {
+&"RESET": SubResource("Animation_8da05"),
+&"atack": SubResource("Animation_efikr"),
+&"attack": SubResource("Animation_5pkka")
+}
+
+[node name="SwordAreena" type="Node2D"]
+
+[node name="Borders" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Borders"]
+position = Vector2(-9, 3010.0002)
+scale = Vector2(0.65, 0.65)
+physics_material_override = SubResource("PhysicsMaterial_w1p23")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D"]
+position = Vector2(1.5497208e-06, 0.00022125244)
+shape = SubResource("WorldBoundaryShape2D_c5ob8")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Borders"]
+position = Vector2(94, -1706.0001)
+rotation = 3.1414578
+scale = Vector2(0.42249995, 0.42249995)
+physics_material_override = SubResource("PhysicsMaterial_w1p23")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D2"]
+position = Vector2(37.869823, -152.54465)
+shape = SubResource("WorldBoundaryShape2D_c5ob8")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Borders"]
+position = Vector2(4825, 12)
+rotation = -0.00026971498
+scale = Vector2(0.17850623, 0.17850623)
+physics_material_override = SubResource("PhysicsMaterial_w1p23")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D3"]
+position = Vector2(37.869823, -152.54465)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_c5ob8")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Borders"]
+position = Vector2(-3200, 15)
+rotation = -0.00053943
+scale = Vector2(0.031864468, 0.031864468)
+physics_material_override = SubResource("PhysicsMaterial_w1p23")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D4"]
+position = Vector2(188.2968, 0.10157776)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_c5ob8")
+
+[node name="ParchmentTextureE4Dc566e" type="Sprite2D" parent="."]
+modulate = Color(0.92146873, 0.59604895, 0.3570217, 1)
+position = Vector2(877, 719)
+scale = Vector2(4.708215, 3.2056968)
+texture = ExtResource("2_w1p23")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(967, 666)
+zoom = Vector2(0.2, 0.2)
+limit_left = -4791
+limit_top = -4250
+limit_right = 4810
+limit_bottom = 4540
+
+[node name="Player" parent="." instance=ExtResource("1_ujgkp")]
+z_index = 1
+position = Vector2(966, 0)
+script = ExtResource("3_c5ob8")
+speed = 2000.0
+attack_cooldown = 1.2
+block_cooldown = 1.0
+attack_duration = 0.5
+attack_range = 500.0
+knockback_force = 150.0
+block_knockback_force = 200.0
+health = 3
+
+[node name="AttackTimer" type="Timer" parent="Player"]
+one_shot = true
+
+[node name="BlockTimer" type="Timer" parent="Player"]
+one_shot = true
+
+[node name="Sword2" type="Sprite2D" parent="Player"]
+position = Vector2(259.00003, -78)
+rotation = 0.5235988
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("4_efikr")
+offset = Vector2(66.25555, -89.00476)
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("5_8da05")
+offset = Vector2(76, -267.92)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Player"]
+position = Vector2(100, -79)
+shape = SubResource("RectangleShape2D_efikr")
+
+[node name="Swordmaster" type="CharacterBody2D" parent="."]
+position = Vector2(1703, -1002.88)
+script = ExtResource("4_ilxhi")
+
+[node name="Sprite2D" type="Sprite2D" parent="Swordmaster"]
+position = Vector2(309, 972)
+texture = ExtResource("4_t7fo4")
+offset = Vector2(45, -255)
+
+[node name="Satchel(1)" type="Sprite2D" parent="Swordmaster"]
+position = Vector2(284, 988)
+texture = ExtResource("5_ilxhi")
+offset = Vector2(54, -286)
+
+[node name="AttackTimer" type="Timer" parent="Swordmaster"]
+one_shot = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Swordmaster"]
+position = Vector2(241, 909.88)
+shape = SubResource("RectangleShape2D_efikr")
+
+[node name="Sword" type="Sprite2D" parent="Swordmaster"]
+position = Vector2(68.82123, 876.8999)
+rotation = -0.5235988
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("4_efikr")
+offset = Vector2(74.22473, -80.28931)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3fv43")
+}
+
+[node name="Plives" type="Label" parent="."]
+offset_left = -3080.0
+offset_top = -1508.0
+offset_right = -2102.0
+offset_bottom = -1099.0
+theme_override_font_sizes/font_size = 300
+text = "lives: 3"
+
+[node name="Olives" type="Label" parent="."]
+offset_left = 3771.0
+offset_top = -1508.0
+offset_right = 4749.0
+offset_bottom = -1099.0
+theme_override_font_sizes/font_size = 300
+text = "lives: 3"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -3089.0
+offset_top = 2596.0
+offset_right = -842.0
+offset_bottom = 2837.0
+theme_override_constants/outline_size = 50
+theme_override_font_sizes/font_size = 176
+text = "K and J to block and attack"
+
+[connection signal="timeout" from="Player/AttackTimer" to="Player" method="_on_AttackTimer_timeout"]
+[connection signal="timeout" from="Player/BlockTimer" to="Player" method="_on_BlockTimer_timeout"]
+[connection signal="timeout" from="Swordmaster/AttackTimer" to="Swordmaster" method="_on_AttackTimer_timeout"]

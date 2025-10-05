@@ -1,0 +1,355 @@
+[gd_scene load_steps=29 format=3 uid="uid://drhmqdtkeahgp"]
+
+[ext_resource type="Script" uid="uid://v5kf1qqe7nm0" path="res://Scripts/loalty.gd" id="1_mipjh"]
+[ext_resource type="PackedScene" uid="uid://ej413fo3j4di" path="res://Scenes/player.tscn" id="1_x87qo"]
+[ext_resource type="Texture2D" uid="uid://6rgv4v72hhmj" path="res://Assets/parchment-texture-e4dc566e.jpg" id="2_b6fju"]
+[ext_resource type="Texture2D" uid="uid://dwcipamsgw0xo" path="res://Assets/2-grass-3948c734.webp" id="3_6h5vk"]
+[ext_resource type="Texture2D" uid="uid://c1kygj215mnnt" path="res://Assets/4-chambers-69debdd3.webp" id="4_2fmhe"]
+[ext_resource type="Texture2D" uid="uid://p2435rsy487c" path="res://Assets/6-great-hall-fea7ebd7.webp" id="5_7iton"]
+[ext_resource type="Texture2D" uid="uid://dti7x0aqcikfb" path="res://Assets/meeple-green-09f22940 (1).png" id="5_gtbs0"]
+[ext_resource type="Texture2D" uid="uid://rkslal11cocf" path="res://Assets/3-walls-c453d29b.webp" id="6_5dgvu"]
+[ext_resource type="Texture2D" uid="uid://q8xedjkw318t" path="res://Assets/7-armory-5b3ffbbd.webp" id="6_ikfsv"]
+[ext_resource type="Texture2D" uid="uid://b6xlcek3d4e1a" path="res://Assets/8-market-71942c32.webp" id="7_5dgvu"]
+[ext_resource type="Texture2D" uid="uid://dj2lb8e0o0l52" path="res://Assets/5-keep-1f8dc624.webp" id="7_7iton"]
+[ext_resource type="Texture2D" uid="uid://bs8o4jsqwv3pf" path="res://Assets/lataus.png" id="10_uscyt"]
+[ext_resource type="Texture2D" uid="uid://hx7uho7n2ihi" path="res://Assets/9-fountain-c1be6cbb.webp" id="12_4xiap"]
+[ext_resource type="Script" uid="uid://c15nefbcf1437" path="res://Scripts/gate_npc.gd" id="12_wywco"]
+[ext_resource type="Texture2D" uid="uid://s5vcbabxqruv" path="res://Assets/NewAssets/mercenary-63f27597.png" id="13_8m72m"]
+[ext_resource type="PackedScene" uid="uid://bdtrae1380hk2" path="res://Scenes/GameUi.tscn" id="14_ldntv"]
+[ext_resource type="Script" uid="uid://djim2whyns1oq" path="res://Scripts/game_ui.gd" id="15_w8jfd"]
+[ext_resource type="Script" uid="uid://bo1hl20dx8ebj" path="res://Scripts/swordmaster_npc.gd" id="16_a7fet"]
+[ext_resource type="Texture2D" uid="uid://bpklhj43smhkn" path="res://Assets/NewAssets/satchel (1).png" id="17_gtbs0"]
+[ext_resource type="Texture2D" uid="uid://dt2gu0wn6gxwp" path="res://Assets/NewAssets/merchant-9dd340b9.png" id="20_aq00n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_817jg"]
+radius = 609.0033
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ldntv"]
+radius = 560.9135
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_b6fju"]
+rough = true
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b6fju"]
+distance = 141.53857
+
+[sub_resource type="Animation" id="Animation_v0iea"]
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6t5aa"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666665, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.31415927, 0.31415927, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_vgqql"]
+resource_name = "walking"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.10471976, -0.10471976, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fkybt"]
+_data = {
+&"RESET": SubResource("Animation_v0iea"),
+&"idle": SubResource("Animation_6t5aa"),
+&"walking": SubResource("Animation_vgqql")
+}
+
+[node name="GameScene" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Loalty" type="Area2D" parent="."]
+position = Vector2(590, 430)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_mipjh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Loalty"]
+position = Vector2(2487, 3295)
+shape = SubResource("CircleShape2D_817jg")
+
+[node name="SwordmasterNPC" type="Area2D" parent="."]
+position = Vector2(590, 430)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("16_a7fet")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordmasterNPC"]
+position = Vector2(-2733, -1125)
+shape = SubResource("CircleShape2D_ldntv")
+
+[node name="GateNPC" type="Area2D" parent="."]
+position = Vector2(295, 215)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("12_wywco")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GateNPC"]
+position = Vector2(-44, 8)
+shape = SubResource("CircleShape2D_ldntv")
+
+[node name="Mercenary63f27597" type="Sprite2D" parent="GateNPC"]
+position = Vector2(79, -448)
+texture = ExtResource("13_8m72m")
+
+[node name="Borders" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Borders"]
+position = Vector2(0, 4633)
+scale = Vector2(0.65, 0.65)
+physics_material_override = SubResource("PhysicsMaterial_b6fju")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D"]
+position = Vector2(1.5497208e-06, 0.00022125244)
+shape = SubResource("WorldBoundaryShape2D_b6fju")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Borders"]
+position = Vector2(14, -4320)
+rotation = 3.1414578
+scale = Vector2(0.42249995, 0.42249995)
+physics_material_override = SubResource("PhysicsMaterial_b6fju")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D2"]
+position = Vector2(37.869823, -152.54465)
+shape = SubResource("WorldBoundaryShape2D_b6fju")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Borders"]
+position = Vector2(4816.9995, 24)
+rotation = -0.00026971498
+scale = Vector2(0.17850623, 0.17850623)
+physics_material_override = SubResource("PhysicsMaterial_b6fju")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D3"]
+position = Vector2(37.869823, -152.54465)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_b6fju")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Borders"]
+position = Vector2(-4800, 0)
+rotation = -0.00053943
+scale = Vector2(0.031864468, 0.031864468)
+physics_material_override = SubResource("PhysicsMaterial_b6fju")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D4"]
+position = Vector2(188.2968, 0.10157776)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_b6fju")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Borders"]
+position = Vector2(1791, 262)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/StaticBody2D5"]
+position = Vector2(8043, 1703.9999)
+scale = Vector2(2.173067, 0.26752132)
+polygon = PackedVector2Array(-2399.3735, -5569.649, -2336.329, -1880.2236, -2891.3052, -1498.9453, -2982.4204, -2194.2173, -3091.483, -1334.4727, -3299.944, -1457.8271, -3495.06, -2358.69, -3772.5479, -2044.6963, -4098.815, -3614.6646, -4152.656, -3218.4346, -4335.807, -3521.214, -4320.621, -4694.952, -4399.312, -5382.748, -4091.912, -7038.6904, -4237.3286, -8462.876, -4238.7095, -8485.305, -4512.5156, -6866.7417, -4710.853, -9408.596, -4761.933, -11285.081, -4642.286, -12690.576, -4518.038, -13838.148, -4450.852, -13972.717, -4388.7275, -13875.529, -4052.337, -15307.19, -3644.158, -17090.227, -3471.5908, -17273.389, -2875.659, -18566.742, -2716.8972, -18802.238, -2270.5234, -20159.14)
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Borders"]
+position = Vector2(3582, 524)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/StaticBody2D6"]
+polygon = PackedVector2Array(-5541, -1514, -6905, -763, -7907, -1254, -6440, -2042)
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Borders"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/StaticBody2D7"]
+polygon = PackedVector2Array(3642, 3732, 4394, 3474, 3855, 3128, 2972, 3426)
+
+[node name="Player" parent="." instance=ExtResource("1_x87qo")]
+position = Vector2(-632, 360)
+collision_layer = 3
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(1, -2)
+zoom = Vector2(0.2, 0.2)
+limit_left = -4791
+limit_top = -4250
+limit_right = 4810
+limit_bottom = 4540
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("5_gtbs0")
+offset = Vector2(76, -267.92)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+libraries = {
+&"": SubResource("AnimationLibrary_fkybt")
+}
+autoplay = "walking"
+
+[node name="GameUI" parent="." instance=ExtResource("14_ldntv")]
+offset_left = -196.0
+offset_top = -90.0
+offset_right = -196.0
+offset_bottom = -90.0
+script = ExtResource("15_w8jfd")
+
+[node name="Backround" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="7Armory5b3Ffbbd" type="Sprite2D" parent="Backround"]
+position = Vector2(-3104, -798)
+scale = Vector2(8.12, 8.12)
+texture = ExtResource("6_ikfsv")
+offset = Vector2(677.463, -210.71432)
+
+[node name="Satchel" type="Sprite2D" parent="Backround"]
+position = Vector2(-3104, -797)
+texture = ExtResource("17_gtbs0")
+offset = Vector2(1034, -194)
+
+[node name="8Market71942c32" type="Sprite2D" parent="Backround"]
+position = Vector2(-2612.0002, 2807.9998)
+scale = Vector2(8.51, 8.51)
+texture = ExtResource("7_5dgvu")
+offset = Vector2(-15.746155, -366.27493)
+
+[node name="ParchmentTextureE4Dc566e" type="Sprite2D" parent="Backround"]
+z_index = -1
+position = Vector2(248.00002, 5349)
+scale = Vector2(5, 5)
+texture = ExtResource("2_b6fju")
+offset = Vector2(-34, -1040.9999)
+
+[node name="2Grass3948c734" type="Sprite2D" parent="Backround"]
+z_index = -1
+position = Vector2(239, 7307)
+scale = Vector2(3.5698252, 8.418473)
+texture = ExtResource("3_6h5vk")
+offset = Vector2(-77.31471, -382.72968)
+
+[node name="3WallsC453d29b" type="Sprite2D" parent="Backround"]
+position = Vector2(1227.2319, -1490.5387)
+rotation = -0.01745329
+scale = Vector2(4.8200006, 4.8200006)
+texture = ExtResource("6_5dgvu")
+offset = Vector2(726.95264, -185.5697)
+
+[node name="4Chambers69Debdd3" type="Sprite2D" parent="Backround"]
+position = Vector2(1228, -1484.0001)
+scale = Vector2(4.4999995, 4.4999995)
+texture = ExtResource("4_2fmhe")
+offset = Vector2(79.111176, 234.22226)
+
+[node name="6GreatHallFea7Ebd7" type="Sprite2D" parent="Backround"]
+position = Vector2(1198, -1460.9999)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("5_7iton")
+offset = Vector2(79.55554, 205.11111)
+
+[node name="5Keep1f8Dc624" type="Sprite2D" parent="Backround"]
+position = Vector2(1214, -1487)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("7_7iton")
+offset = Vector2(73.55557, 209.55554)
+
+[node name="Lataus" type="Sprite2D" parent="Backround"]
+position = Vector2(1458, -1410)
+scale = Vector2(3.59, 3.59)
+texture = ExtResource("10_uscyt")
+offset = Vector2(-200.27853, 409.47073)
+
+[node name="9FountainC1Be6Cbb" type="Sprite2D" parent="Backround"]
+position = Vector2(-4060, -4318)
+scale = Vector2(6.77, 6.77)
+texture = ExtResource("12_4xiap")
+
+[node name="2Grass3948c735" type="Sprite2D" parent="Backround"]
+position = Vector2(-2354, -5449)
+rotation = 2.218332
+scale = Vector2(5.000535, 7.6979938)
+texture = ExtResource("3_6h5vk")
+offset = Vector2(537.527, 43.04608)
+
+[node name="6GreatHallFea7Ebd8" type="Sprite2D" parent="Backround"]
+position = Vector2(3672, 3402)
+scale = Vector2(4.04, 4.04)
+texture = ExtResource("5_7iton")
+offset = Vector2(-41.33661, -49.75244)
+
+[node name="Merchant9Dd340b9" type="Sprite2D" parent="Backround"]
+position = Vector2(3058, 3841)
+texture = ExtResource("20_aq00n")
+offset = Vector2(80, -470)
+
+[connection signal="body_entered" from="Loalty" to="GameUI" method="_on_loalty_body_entered"]
+[connection signal="body_entered" from="Loalty" to="Loalty" method="_on_body_entered"]
+[connection signal="body_exited" from="Loalty" to="GameUI" method="_on_loalty_body_exited"]
+[connection signal="body_exited" from="Loalty" to="Loalty" method="_on_body_exited"]
+[connection signal="body_entered" from="SwordmasterNPC" to="SwordmasterNPC" method="_on_body_entered"]
+[connection signal="body_entered" from="SwordmasterNPC" to="GameUI" method="_on_swordmaster_npc_body_entered"]
+[connection signal="body_exited" from="SwordmasterNPC" to="SwordmasterNPC" method="_on_body_exited"]
+[connection signal="body_exited" from="SwordmasterNPC" to="GameUI" method="_on_swordmaster_npc_body_exited"]
+[connection signal="body_entered" from="GateNPC" to="GateNPC" method="_on_body_entered"]
+[connection signal="body_entered" from="GateNPC" to="GameUI" method="_on_gate_npc_body_entered"]
+[connection signal="body_exited" from="GateNPC" to="GateNPC" method="_on_body_exited"]
+[connection signal="body_exited" from="GateNPC" to="GameUI" method="_on_gate_npc_body_exited"]

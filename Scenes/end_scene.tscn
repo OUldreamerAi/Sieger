@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://465isd8klldy"]
+
+[ext_resource type="Texture2D" uid="uid://6atqve1j4tfp" path="res://Assets/0-sky-ba6d06f0.webp" id="1_5pkqa"]
+[ext_resource type="Texture2D" uid="uid://tbkqfoyhtyw4" path="res://Assets/scroll-aca243bf.webp" id="2_20ln8"]
+[ext_resource type="Texture2D" uid="uid://5kfqdpyytl78" path="res://Assets/NewAssets/coin-e29f6b57.png" id="3_foadp"]
+[ext_resource type="Texture2D" uid="uid://nppffiw2kg82" path="res://Assets/NewAssets/cowboyHat.png" id="4_xom27"]
+[ext_resource type="Texture2D" uid="uid://n41drxj2tq37" path="res://Assets/NewAssets/sailorHat (1).png" id="5_kwb7v"]
+[ext_resource type="Texture2D" uid="uid://4dddejd7wdla" path="res://Assets/NewAssets/castle-c90bfbb4.webp" id="6_f7vrb"]
+
+[node name="EndScene" type="Node2D"]
+
+[node name="0SkyBa6d06f0" type="Sprite2D" parent="."]
+position = Vector2(4026.9998, 2185)
+scale = Vector2(3.1523402, 2.2509637)
+texture = ExtResource("1_5pkqa")
+
+[node name="ScrollAca243Bf" type="Sprite2D" parent="."]
+position = Vector2(3923, 2250)
+scale = Vector2(2.76, 2.76)
+texture = ExtResource("2_20ln8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(4000, 2250)
+zoom = Vector2(0.2, 0.2)
+
+[node name="SailorHat(1)" type="Sprite2D" parent="."]
+position = Vector2(5912, 1120)
+texture = ExtResource("5_kwb7v")
+
+[node name="CastleC90Bfbb4" type="Sprite2D" parent="."]
+position = Vector2(5087, 3168.9998)
+scale = Vector2(4.52, 4.52)
+texture = ExtResource("6_f7vrb")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1925.0
+offset_top = 872.0
+offset_right = 5919.0
+offset_bottom = 1494.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 456
+text = "You bet the game!"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 2812.0
+offset_top = 1799.0
+offset_right = 6806.0
+offset_bottom = 2448.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 236
+text = "Thanks for letting me use the art:
+@kl
+@ToxicStarfall
+@KittyCat"
+
+[node name="Label4" type="Label" parent="."]
+offset_left = -84.0
+offset_top = 4240.0
+offset_right = 6317.0
+offset_bottom = 8500.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 106
+text = "https://github.com/nathanhoad/godot_dialogue_manager/blob/main/LICENSE"
+
+[node name="CoinE29f6b58" type="Sprite2D" parent="."]
+position = Vector2(2157, 2546)
+scale = Vector2(0.62, 0.6219641)
+texture = ExtResource("3_foadp")
+
+[node name="CowboyHat" type="Sprite2D" parent="CoinE29f6b58"]
+position = Vector2(70.96777, -255.64172)
+scale = Vector2(1.6129032, 1.6078099)
+texture = ExtResource("4_xom27")

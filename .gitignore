@@ -1,0 +1,17 @@
+# Godot cache and build folders
+.import/
+.godot/
+.mono/
+.export/
+.android/
+.ios/
+
+# Temporary files
+*.import
+*.log
+*.tmp
+
+# OS junk
+.DS_Store
+Thumbs.db
+/

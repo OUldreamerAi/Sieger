@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://hxsarboxpow"]
+
+[ext_resource type="Texture2D" uid="uid://6atqve1j4tfp" path="res://Assets/0-sky-ba6d06f0.webp" id="1_xatpa"]
+[ext_resource type="Texture2D" uid="uid://b4sv3bvpri1dh" path="res://Assets/1-mountains-4c19c2c8.webp" id="2_ucept"]
+[ext_resource type="Texture2D" uid="uid://6rgv4v72hhmj" path="res://Assets/parchment-texture-e4dc566e.jpg" id="3_vnck7"]
+[ext_resource type="Texture2D" uid="uid://4dddejd7wdla" path="res://Assets/NewAssets/castle-c90bfbb4.webp" id="4_mbcy1"]
+
+[node name="Archery" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(863, 587)
+zoom = Vector2(0.2, 0.2)
+limit_left = -4791
+limit_top = -4250
+limit_right = 4810
+limit_bottom = 4540
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(110, 1606)
+
+[node name="0SkyBa6d06f0" type="Sprite2D" parent="Node2D"]
+position = Vector2(800, -1269)
+scale = Vector2(3.1523402, 2.2509637)
+texture = ExtResource("1_xatpa")
+
+[node name="1Mountains4c19c2c8" type="Sprite2D" parent="Node2D"]
+position = Vector2(697, 1402)
+scale = Vector2(3.08, 5.79)
+texture = ExtResource("2_ucept")
+
+[node name="1Mountains4c19c2c8" type="Sprite2D" parent="Node2D/1Mountains4c19c2c8"]
+position = Vector2(357.46753, 497.58203)
+scale = Vector2(0.76, 1.429)
+texture = ExtResource("2_ucept")
+
+[node name="1Mountains4c19c2c8" type="Sprite2D" parent="Node2D/1Mountains4c19c2c8/1Mountains4c19c2c8"]
+position = Vector2(-959.501, 141.65009)
+scale = Vector2(0.76, 1.429)
+texture = ExtResource("2_ucept")
+
+[node name="1Mountains4c19c2c9" type="Sprite2D" parent="Node2D"]
+position = Vector2(1221, 1694.0002)
+scale = Vector2(2.49, 2.49)
+texture = ExtResource("2_ucept")
+
+[node name="ParchmentTextureE4Dc566e" type="Sprite2D" parent="Node2D"]
+position = Vector2(878, 2709)
+scale = Vector2(4.4955473, 2.0319936)
+texture = ExtResource("3_vnck7")
+
+[node name="CastleC90Bfbb4" type="Sprite2D" parent="Node2D"]
+position = Vector2(2624, 893)
+scale = Vector2(6.95, 6.95)
+texture = ExtResource("4_mbcy1")

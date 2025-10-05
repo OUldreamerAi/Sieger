@@ -1,0 +1,65 @@
+~ start
+
+if not Autoload.has_met_knight
+	set Autoload.has_met_knight = true
+	You: Greetings! I have traveled from afar to join the army of Her Majesty!
+	Gatekeeper: Well, well… [wait=1] A brave soul seeking to serve the crown. We are always in need of strong and loyal soldiers.
+	Gatekeeper: But first… [wait=1]you must prove that you are worthy.
+	You: Prove myself? How?
+	Gatekeeper: Go find the two masters, each testing a skill every true knight must possess.
+	Gatekeeper: From the swordmaster, earn the Coin of [pulse]Swordsmanship[/pulse].[wait=1] From the chaplain, earn the Coin of [pulse]Loyalty[/pulse].
+	Gatekeeper: Bring me all two coins, and only then shall I open the gate and welcome you as a knight of the realm.
+
+else
+	You: I have returned, gatekeeper!
+	Gatekeeper: Do you bring the two coins?
+	if Autoload.coins == 2:
+		You: I have returned, gatekeeper — and I bring the coins! 
+		[font_size={25}][i]his eyes widen as you show him the two coins. He takes them carefully, one by one[/i][/font_size]
+		Gatekeeper: You have done it. You have proven yourself in all the trials. Few manage this feat.
+		You: Then… may I join the army of Her Majesty?
+		[font_size={25}][i]He smiles, striking the ground with his spear[/i][/font_size]
+		Gatekeeper: Aye! From this day forward, you are no mere traveler. You are a knight of the realm. Enter, and take your place among the warriors of the crown!
+		do Autoload.the_end.emit()
+	else:
+		You: I… [wait=1] do not yet have them all.
+		Gatekeeper: Then you are not ready. A knight must be complete in skill, spirit, and honor.
+		Gatekeeper: Go back, finish your trials, and return only when you hold the four coins in your hands.
+		You: I understand. I’ll return when I have them all.
+		Gatekeeper: Good. Do not tarry too long, or others will claim the glory before you.
+
+
+=> END
+
+~ swordmaster_start
+if not Autoload.has_met_swordmaster
+	set Autoload.has_met_swordmaster = true
+	You: Greetings, master. I’ve come to prove my swordsmanship.
+	[font_size={25}][i]He smiles, striking the ground with his spear[/i][/font_size]
+	Swordmaster: Hmph. Another eager boy who thinks he can swing a blade. Tell me, have you ever faced steel in your life?
+	You: I wish to serve Her Majesty. I’ll do whatever it takes.
+	[font_size={25}][i]He smirks slightly.[/i][/font_size]
+	Swordmaster: Words are easy. Steel is hard. Very well, if you want the Coin of Swordsmanship, you’ll earn it with your own hands.
+	Swordmaster: Face me in the ring. Show me that you have the stance, the reflexes, and the courage of a warrior. If you fall, you try again — until you either learn or give up
+	do Autoload.readyfight_signal.emit("some_argument")
+else
+	Swordmaster: Back again, are you? Hah! You’ve already proven your steel.
+	Swordmaster: Keep training — a sharp blade dulls quickly if left unused.
+	You: I’ll keep my edge, Master.
+	Swordmaster: Good. A true knight never stops learning.
+=> END
+~ loyalty
+if not Autoload.has_met_chaplain
+	set Autoload.has_met_chaplain = true
+	You: I wish to prove my loyalty, sir. I will do whatever is required.
+	Chaplain: Hmm. Many claim loyalty, but few understand what it truly means. Loyalty is not obedience alone — it is faith, sacrifice, and the courage to do what is right even when it costs you.
+	You: I understand. I’m ready to begin.
+	Chaplain: Very well. Speak with honesty and conviction, for the crown values truth above flattery.
+	[font_size={25}][i]He raises a small medallion, engraved with the royal seal.[/i][/font_size]
+	Chaplain: Pass this trial, and you shall earn the Coin of Loyalty — proof that your spirit is worthy of the Queen’s trust.
+	do Autoload.ready_loyalty.emit()
+else:
+	Chaplain: Ah, the loyal one returns. Your heart remains true, I trust?
+	You: I serve the crown with all my strength.
+	Chaplain: Then go in peace. The Queen’s light shines brighter with souls like yours.
+=> END

@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://vt3frbitveaa"]
+
+[ext_resource type="Script" uid="uid://bugm7m6jlbp6e" path="res://Scripts/loyalty_trial.gd" id="1_88n1u"]
+[ext_resource type="Texture2D" uid="uid://cufc5a7bwe1lr" path="res://Assets/NewAssets/chambers-background-4f49bad0.webp" id="1_r137p"]
+
+[node name="LoyaltyTrial" type="Node2D"]
+script = ExtResource("1_88n1u")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="UIRoot" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 8123.79
+offset_bottom = 4523.82
+size_flags_horizontal = 4
+theme_override_constants/separation = 55
+
+[node name="Title" type="Label" parent="CanvasLayer/UIRoot"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 526
+text = "Trial of Loyalty"
+horizontal_alignment = 1
+
+[node name="Scenario" type="RichTextLabel" parent="CanvasLayer/UIRoot"]
+custom_minimum_size = Vector2(0, 1800.07)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 336
+bbcode_enabled = true
+text = "Example"
+
+[node name="Buttons" type="HBoxContainer" parent="CanvasLayer/UIRoot"]
+layout_mode = 2
+theme_override_constants/separation = 214
+alignment = 1
+
+[node name="ChoiceA" type="Button" parent="CanvasLayer/UIRoot/Buttons"]
+custom_minimum_size = Vector2(2000, 500)
+layout_mode = 2
+theme_override_font_sizes/font_size = 256
+text = "Choice"
+
+[node name="ChoiceB" type="Button" parent="CanvasLayer/UIRoot/Buttons"]
+custom_minimum_size = Vector2(2000, 500)
+layout_mode = 2
+theme_override_font_sizes/font_size = 256
+text = "Choice"
+
+[node name="Progress" type="ProgressBar" parent="CanvasLayer/UIRoot"]
+custom_minimum_size = Vector2(200, 240.11)
+layout_mode = 2
+max_value = 3.0
+show_percentage = false
+
+[node name="Feedback" type="Label" parent="CanvasLayer/UIRoot"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_font_sizes/font_size = 286
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer"]
+position = Vector2(4000, 2250)
+zoom = Vector2(0.2, 0.2)
+
+[node name="ChambersBackground4f49Bad0" type="Sprite2D" parent="."]
+position = Vector2(4061.0002, 2284)
+scale = Vector2(4.23, 4.23)
+texture = ExtResource("1_r137p")
+
+[node name="ScenarioTimer" type="Timer" parent="."]

@@ -1,0 +1,14 @@
+#import Godot cache and build folders
+.import/
+.godot/
+.mono/
+.export/
+
+#temporary files
+*.import
+*.log
+*.tmp
+
+#macOS junk
+.DS_Store
+/
