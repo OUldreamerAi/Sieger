@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cafolyp5mp88h"]
+[gd_scene load_steps=17 format=3 uid="uid://cafolyp5mp88h"]
 
 [ext_resource type="PackedScene" uid="uid://ej413fo3j4di" path="res://Scenes/player.tscn" id="1_ujgkp"]
 [ext_resource type="Texture2D" uid="uid://6rgv4v72hhmj" path="res://Assets/parchment-texture-e4dc566e.jpg" id="2_w1p23"]
@@ -17,6 +17,9 @@ distance = 141.53857
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_efikr"]
 size = Vector2(535, 86)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8da05"]
+radius = 608.7692
 
 [sub_resource type="Animation" id="Animation_efikr"]
 resource_name = "atack"
@@ -177,6 +180,12 @@ offset = Vector2(76, -267.92)
 position = Vector2(100, -79)
 shape = SubResource("RectangleShape2D_efikr")
 
+[node name="Area2D" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+position = Vector2(-2, -40)
+shape = SubResource("CircleShape2D_8da05")
+
 [node name="Swordmaster" type="CharacterBody2D" parent="."]
 position = Vector2(1703, -1002.88)
 script = ExtResource("4_ilxhi")
@@ -237,4 +246,6 @@ text = "K and J to block and attack"
 
 [connection signal="timeout" from="Player/AttackTimer" to="Player" method="_on_AttackTimer_timeout"]
 [connection signal="timeout" from="Player/BlockTimer" to="Player" method="_on_BlockTimer_timeout"]
+[connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Player/Area2D" to="Player" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Swordmaster/AttackTimer" to="Swordmaster" method="_on_AttackTimer_timeout"]

@@ -8,6 +8,12 @@ const SPEED = 2000.0
 var movement_input := Vector2.ZERO
 
 func _physics_process(_delta: float) -> void:
+	if Autoload.stachel_bought == true:
+		$"Sprite2D/Satchel(1)".visible = true
+	if Autoload.sailorhat_bought == true:
+		$"Sprite2D/SailorHat(1)".visible = true
+	if Autoload.cowboyhat_bought == true:
+		$Sprite2D/CowboyHat.visible = true
 	# Apply movement based on stored input
 	if movement_input.x != 0:
 		velocity.x = movement_input.x * SPEED
@@ -22,8 +28,14 @@ func _physics_process(_delta: float) -> void:
 	# Handle sprite flipping
 	if movement_input.x > 0:
 		sprite.flip_h = true
+		$"Sprite2D/Satchel(1)".flip_h = true
+		$"Sprite2D/SailorHat(1)".flip_h = true
+		$Sprite2D/CowboyHat.flip_h = true
 	elif movement_input.x < 0:
 		sprite.flip_h = false
+		$"Sprite2D/Satchel(1)".flip_h = false
+		$"Sprite2D/SailorHat(1)".flip_h = false
+		$Sprite2D/CowboyHat.flip_h = false
 	
 	# Handle animations - play idle when NOT moving
 	if movement_input.x == 0 and movement_input.y == 0:

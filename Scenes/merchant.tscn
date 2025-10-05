@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dva3nqrbyv4r3"]
+
+[ext_resource type="Script" uid="uid://nlbt54pxrts8" path="res://Scripts/merchant.gd" id="1_25bge"]
+
+[node name="Merchant" type="Node2D"]
+script = ExtResource("1_25bge")

@@ -19,6 +19,7 @@ var opponent: Node2D
 var knockback_velocity: float = 0.0
 signal player_attacked
 signal player_blocked
+var player_close = false
 func _ready():
 	# Try to find opponent with different possible names
 	var parent = get_parent()
@@ -33,6 +34,7 @@ func _ready():
 		sprite = $"../Sprite2D"
 	elif has_node("Sprite2D"):
 		sprite = $Sprite2D
+
 func _physics_process(_delta):
 	# Apply knockback
 	if abs(knockback_velocity) > 10:
@@ -85,8 +87,8 @@ func block():
 	is_blocking = true
 	can_block = false
 	$BlockTimer.start(block_cooldown)
-
-	emit_signal("player_blocked")
+	if player_close == true:
+		emit_signal("player_blocked")
 
 	# Visual feedback
 	if sprite:
@@ -152,3 +154,11 @@ func flash_damage():
 		sprite.modulate = Color.WHITE
 func die():
 	get_tree().change_scene_to_file("res://Scenes/sword_areena.tscn")
+
+
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	player_close = true
+
+
+func _on_area_2d_body_exited(_body: Node2D) -> void:
+	player_close = false

@@ -247,5 +247,6 @@ func _on_player_blocked():
 
 func die():
 	Autoload.coins += 1
+	Autoload.coin += 24
 	print(Autoload.coins)
 	Autoload.fight_won.emit()

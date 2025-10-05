@@ -1,0 +1,86 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs3r5r2hgbf6a"]
+
+[ext_resource type="Script" uid="uid://bwbdosa1dpjh" path="res://Scripts/shop_popup.gd" id="1_4o4w8"]
+
+[node name="ShopPopup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4o4w8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Overlay" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6901961, 0.5921569, 0.46666667, 0.5372549)
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -350.0
+offset_right = 500.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Title" type="Label" parent="CanvasLayer/Panel/MarginContainer/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Shop"
+horizontal_alignment = 1
+
+[node name="GoldDisplay" type="Label" parent="CanvasLayer/Panel/MarginContainer/VBox"]
+z_index = 1
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.90588236, 0.6862745, 0.105882354, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 20
+text = "Gold: 0"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Panel/MarginContainer/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ItemsList" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBox/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="InfoLabel" type="Label" parent="CanvasLayer/Panel/MarginContainer/VBox"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/Panel/MarginContainer/VBox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Close"

@@ -1,7 +1,8 @@
-[gd_scene format=3 uid="uid://bdtrae1380hk2"]
+[gd_scene load_steps=2 format=3 uid="uid://bdtrae1380hk2"]
+
+[ext_resource type="Texture2D" uid="uid://5kfqdpyytl78" path="res://Assets/NewAssets/coin-e29f6b57.png" id="1_pjk1m"]
 
 [node name="Control" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,10 +11,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-visible = false
 z_index = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -30,3 +29,19 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 76
 text = "Press I to interact"
+
+[node name="CoinE29f6b57" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(77, 63)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("1_pjk1m")
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+z_index = 1
+offset_left = 137.0
+offset_top = 1.0
+offset_right = 463.0
+offset_bottom = 141.0
+theme_override_colors/font_outline_color = Color(0.90588236, 0.6862745, 0.105882354, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 88
+text = "0"

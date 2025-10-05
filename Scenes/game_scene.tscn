@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://drhmqdtkeahgp"]
+[gd_scene load_steps=35 format=3 uid="uid://drhmqdtkeahgp"]
 
 [ext_resource type="Script" uid="uid://v5kf1qqe7nm0" path="res://Scripts/loalty.gd" id="1_mipjh"]
 [ext_resource type="PackedScene" uid="uid://ej413fo3j4di" path="res://Scenes/player.tscn" id="1_x87qo"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://q8xedjkw318t" path="res://Assets/7-armory-5b3ffbbd.webp" id="6_ikfsv"]
 [ext_resource type="Texture2D" uid="uid://b6xlcek3d4e1a" path="res://Assets/8-market-71942c32.webp" id="7_5dgvu"]
 [ext_resource type="Texture2D" uid="uid://dj2lb8e0o0l52" path="res://Assets/5-keep-1f8dc624.webp" id="7_7iton"]
+[ext_resource type="Texture2D" uid="uid://n41drxj2tq37" path="res://Assets/NewAssets/sailorHat (1).png" id="8_gqlrj"]
+[ext_resource type="Texture2D" uid="uid://nppffiw2kg82" path="res://Assets/NewAssets/cowboyHat.png" id="9_kiiqx"]
 [ext_resource type="Texture2D" uid="uid://bs8o4jsqwv3pf" path="res://Assets/lataus.png" id="10_uscyt"]
 [ext_resource type="Texture2D" uid="uid://hx7uho7n2ihi" path="res://Assets/9-fountain-c1be6cbb.webp" id="12_4xiap"]
 [ext_resource type="Script" uid="uid://c15nefbcf1437" path="res://Scripts/gate_npc.gd" id="12_wywco"]
@@ -20,6 +22,9 @@
 [ext_resource type="Script" uid="uid://bo1hl20dx8ebj" path="res://Scripts/swordmaster_npc.gd" id="16_a7fet"]
 [ext_resource type="Texture2D" uid="uid://bpklhj43smhkn" path="res://Assets/NewAssets/satchel (1).png" id="17_gtbs0"]
 [ext_resource type="Texture2D" uid="uid://dt2gu0wn6gxwp" path="res://Assets/NewAssets/merchant-9dd340b9.png" id="20_aq00n"]
+[ext_resource type="PackedScene" uid="uid://dva3nqrbyv4r3" path="res://Scenes/merchant.tscn" id="21_817jg"]
+[ext_resource type="Texture2D" uid="uid://videg5d3x8nl" path="res://Assets/customize-character-59f0e55a.webp" id="22_fnr0w"]
+[ext_resource type="PackedScene" uid="uid://bs3r5r2hgbf6a" path="res://Scenes/shop_popup.tscn" id="22_vtwju"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_817jg"]
 radius = 609.0033
@@ -124,6 +129,9 @@ _data = {
 &"idle": SubResource("Animation_6t5aa"),
 &"walking": SubResource("Animation_vgqql")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtwju"]
+radius = 594.4073
 
 [node name="GameScene" type="Node2D"]
 y_sort_enabled = true
@@ -240,6 +248,21 @@ limit_bottom = 4540
 texture = ExtResource("5_gtbs0")
 offset = Vector2(76, -267.92)
 
+[node name="Satchel(1)" type="Sprite2D" parent="Player/Sprite2D"]
+visible = false
+position = Vector2(71, -268)
+texture = ExtResource("17_gtbs0")
+
+[node name="SailorHat(1)" type="Sprite2D" parent="Player/Sprite2D"]
+visible = false
+position = Vector2(76, -268)
+texture = ExtResource("8_gqlrj")
+
+[node name="CowboyHat" type="Sprite2D" parent="Player/Sprite2D"]
+visible = false
+position = Vector2(77, -270)
+texture = ExtResource("9_kiiqx")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 libraries = {
 &"": SubResource("AnimationLibrary_fkybt")
@@ -341,10 +364,38 @@ position = Vector2(3058, 3841)
 texture = ExtResource("20_aq00n")
 offset = Vector2(80, -470)
 
-[connection signal="body_entered" from="Loalty" to="GameUI" method="_on_loalty_body_entered"]
+[node name="Merchant" parent="." instance=ExtResource("21_817jg")]
+position = Vector2(-3902, -71)
+
+[node name="Area2D" type="Area2D" parent="Merchant"]
+position = Vector2(397, 512)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Merchant/Area2D"]
+position = Vector2(-7, 165)
+shape = SubResource("CircleShape2D_vtwju")
+
+[node name="CustomizeCharacter59f0e55a" type="Sprite2D" parent="Merchant"]
+position = Vector2(223.99982, 488)
+scale = Vector2(2.8, 2.8)
+texture = ExtResource("22_fnr0w")
+offset = Vector2(255.71436, -227.49998)
+
+[node name="Merchant9Dd340b9" type="Sprite2D" parent="Merchant"]
+y_sort_enabled = true
+position = Vector2(327, 764)
+texture = ExtResource("20_aq00n")
+offset = Vector2(70, -252)
+
+[node name="ShopPopup" parent="." instance=ExtResource("22_vtwju")]
+offset_left = -1657.0
+offset_top = 520.0
+offset_right = -1657.0
+offset_bottom = 520.0
+
 [connection signal="body_entered" from="Loalty" to="Loalty" method="_on_body_entered"]
-[connection signal="body_exited" from="Loalty" to="GameUI" method="_on_loalty_body_exited"]
+[connection signal="body_entered" from="Loalty" to="GameUI" method="_on_loalty_body_entered"]
 [connection signal="body_exited" from="Loalty" to="Loalty" method="_on_body_exited"]
+[connection signal="body_exited" from="Loalty" to="GameUI" method="_on_loalty_body_exited"]
 [connection signal="body_entered" from="SwordmasterNPC" to="SwordmasterNPC" method="_on_body_entered"]
 [connection signal="body_entered" from="SwordmasterNPC" to="GameUI" method="_on_swordmaster_npc_body_entered"]
 [connection signal="body_exited" from="SwordmasterNPC" to="SwordmasterNPC" method="_on_body_exited"]
@@ -353,3 +404,7 @@ offset = Vector2(80, -470)
 [connection signal="body_entered" from="GateNPC" to="GameUI" method="_on_gate_npc_body_entered"]
 [connection signal="body_exited" from="GateNPC" to="GateNPC" method="_on_body_exited"]
 [connection signal="body_exited" from="GateNPC" to="GameUI" method="_on_gate_npc_body_exited"]
+[connection signal="body_entered" from="Merchant/Area2D" to="GameUI" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Merchant/Area2D" to="Merchant" method="_on_body_entered"]
+[connection signal="body_exited" from="Merchant/Area2D" to="GameUI" method="_on_area_2d_body_exited"]
+[connection signal="body_exited" from="Merchant/Area2D" to="Merchant" method="_on_body_exited"]

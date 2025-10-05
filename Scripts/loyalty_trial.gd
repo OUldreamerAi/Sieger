@@ -2,7 +2,6 @@ extends Node2D
 
 # Signals for communication with parent
 signal trial_completed(passed: bool, score: int)
-signal coin_awarded
 
 # Config
 @export var scenarios := [
@@ -141,7 +140,6 @@ func _finish_trial():
 	if passed:
 		feedback.text = "You have proven your loyalty!"
 		feedback.add_theme_color_override("font_color", Color(0.4, 1.0, 0.4))
-		_grant_coin()
 	else:
 		feedback.text = "You failed the Trial of Loyalty. Return when your heart is truer."
 		feedback.add_theme_color_override("font_color", Color(1.0, 0.4, 0.4))
@@ -162,23 +160,16 @@ func _finish_trial():
 	trial_completed.emit(passed, loyalty_score)
 	
 	# Give time for player to read, then clean up
-	await get_tree().create_timer(8).timeout
+	await get_tree().create_timer(7).timeout
 	_on_finish_timeout()
 	if loyalty_score == 3:
 		Autoload.loalty_won.emit()
 		Autoload.coins += 1
+		Autoload.coin += 19
 		print(Autoload.coins)
 	else: 
 		get_tree().change_scene_to_file("res://Scenes/loyalty_trial.tscn")
 
-func _grant_coin():
-	# Emit signal so parent can handle coin award
-	coin_awarded.emit()
-	
-	# Alternative: directly instantiate coin if you prefer scene-based approach
-	# if coin_scene_path != "" and ResourceLoader.exists(coin_scene_path):
-	# 	var coin = load(coin_scene_path).instantiate()
-	# 	# Handle coin instantiation (add to inventory, etc.)
 
 func _on_finish_timeout():
 	# Clean up and return control to parent
