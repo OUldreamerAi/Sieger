@@ -1,5 +1,5 @@
-# 🏰 Sieger
-
+#  Sieger
+"(important wasd does not work use the arrow keys) 
 ##  Description  
 **Sieger** is a short 2D adventure game made in **Godot** where you play as a boy who dreams of joining the Queen’s army.  
 To prove yourself worthy, you’ll explore the world, talk to NPCs, and complete minigames to earn four special coins — each representing a knightly virtue. Bring them to the castle gate, and you’ll fulfill your dream of becoming a true knight!  
